@@ -25,5 +25,6 @@ packages = ["src/netham"]
 
 [dependency-groups]
 dev = [
+    "debugpy>=1.8.21",
     "pytest>=9.0.2",
 ]
