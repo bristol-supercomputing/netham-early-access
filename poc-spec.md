@@ -8,7 +8,7 @@ SPDX-License-Identifier: CC-BY-SA-4.0
 
 This specification was created to be used as a starting point for a proof-of-concept implementation for the `netham` tool. The proof-of-concept code was successfully created and demonstrated the technical feasibility of the command line user flow for acquiring temporary AWS credentials using a web identity token.
 
-After demonstrating feasibility it was determined that the proof-of-concept code was sufficiently capable and robust to be used as the basis for a minimal viable product (MVP). The MVP will be developed and refined in collaboration with users during an early access period, to address pain points and improve user experience. 
+After demonstrating feasibility it was determined that the proof-of-concept code was sufficiently capable and robust to be used as the basis for a minimal viable product (MVP). The MVP will be developed and refined in collaboration with users during an early access period, to address pain points and improve user experience.
 
 During the early access period we will iterate on the MVP based on user feedback and bug reports, producing a reference implementation. This will then be used as the starting point for a clean reimplementation. The reimplementation will provide the opportunity to shed technical debt accrued during early development and allow the adoption tooling/processes/constructs that promote security and robustness. It is anticipated that the reimplementation will be done using Rust, to produce strongly typed, memory safe code that can be distributed as a single self-contained binary.
 
