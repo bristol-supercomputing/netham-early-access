@@ -25,7 +25,7 @@ def decode_jwt_payload(token: str) -> dict:
     """Decode the payload of a JWT without verifying the signature.
 
     Extracts the claims from the base64url-encoded payload segment of the token.
-    Not verifying signature is fine since not used for sensitive reasons such 
+    Not verifying signature is fine since not used for sensitive reasons such
     as access control.
 
     :param token: JWT access token string.

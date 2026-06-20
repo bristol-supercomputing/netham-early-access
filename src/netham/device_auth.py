@@ -43,10 +43,11 @@ def request_device_authorization(config: Config) -> dict:
     """
     url = _device_auth_endpoint(config.issuer_url)
     try:
-        response = requests.post(url, 
+        response = requests.post(
+            url,
             data={
                 "client_id": config.client_id
-            }, 
+            },
             timeout=30,
         )
         response.raise_for_status()
