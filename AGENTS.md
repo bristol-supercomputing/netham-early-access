@@ -52,7 +52,7 @@ The package is intended to be distributed to early access users for testing and 
 
 ## Licensing
 
-All files must include an [SPDX](https://spdx.dev/) header. The copyright text must read `© 2026 James C. Womack`. Source files use `MIT`; documentation uses `CC-BY-SA-4.0`; other files are explicitly dedicated to the public domain and should use `CC0-1.0`. Licence texts are in `LICENSES/`. The `reuse` tool is available to check compliance:
+All files must include an [SPDX](https://spdx.dev/) header. The copyright text must be set to the appropriate copyright holder. Source files use `MIT`; documentation uses `CC-BY-SA-4.0`; other files are explicitly dedicated to the public domain and should use `CC0-1.0`. Licence texts are in `LICENSES/`. The `reuse` tool is available to check compliance:
 
 ```shell
 reuse lint
