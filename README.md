@@ -3,13 +3,21 @@ SPDX-FileCopyrightText: © 2026 James C. Womack
 SPDX-License-Identifier: CC-BY-SA-4.0
 -->
 
-# netham-poc
+# netham-early-access
 
 [Netham Lock](https://en.wikipedia.org/wiki/Netham_Lock) is the point at which boats from the River Avon can access the Bristol Floating Harbour.
 
 `netham` is a command line tool for acquiring temporary AWS credentials for a role assumed using the STS API via an OAuth 2.0/OpenID Connect web identity token.
 
 The primary use case is to enable service users with identities stored in an OAuth 2.0/OpenID Connect compliant IAM service (e.g. Keycloak) to acquire access to resources via an AWS-style API (e.g. S3) by assuming a role that has access to those resources.
+
+## Early access version
+
+This repository contains a minimal version of `netham` written in Python. This is being developed and refined in collaboration with users during an early access period, to address pain points and improve user experience.
+
+The goal of development during the early access period is to produce a reference implementation, which can then be used as the basis for a clean reimplementation. Python was chosen for this initial version to produce a clear and readable reference. It is anticipated that the reimplementation will be done using Rust, to produce strongly typed, memory safe code that can be distributed as a single self-contained binary.
+
+Users of the early access version of `netham` should be aware that it will not receive ongoing maintenance or updates beyond the early access period. Once the clean reimplementation is in place, this repository will be archived and users should migrate to the reimplemented version.
 
 ## Motivating example
 
