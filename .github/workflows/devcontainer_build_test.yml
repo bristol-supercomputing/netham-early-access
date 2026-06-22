@@ -1,3 +1,5 @@
+# SPDX-FileCopyrightText: © 2026 James C. Womack
+# SPDX-License-Identifier: MIT
 name: "Dev Container: build and run tests"
 
 on:
