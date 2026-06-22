@@ -30,4 +30,4 @@ jobs:
         with:
           configFile: ./.devcontainer/devcontainer.json
           push: never
-          runCmd: uv run pytest --verbose tests
+          runCmd: uv run --no-cache pytest --verbose tests
