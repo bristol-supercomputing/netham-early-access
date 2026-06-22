@@ -55,7 +55,7 @@ jobs:
     - name: Test with coverage
       if: ${{ always() && steps.install.conclusion == 'success' }}
       run: |
-        pytest --cov=netham --cov-report=term-missing --cov-report=xml --cov-report=html "${GITHUB_WORKSPACE}/tests"
+        pytest --verbose --cov=netham --cov-report=term-missing --cov-report=xml --cov-report=html "${GITHUB_WORKSPACE}/tests"
 
     - name: Upload coverage artifact
       if: matrix.python-version == env.PYTHON_VERSION_COVERAGE_UPLOAD
