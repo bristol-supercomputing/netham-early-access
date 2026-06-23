@@ -69,7 +69,8 @@ def assume_role(config: Config, access_token: str, role_session_name: str) -> di
     :param role_session_name: Name tag to apply to the assumed-role session.
     :returns: Credentials dictionary with keys ``AccessKeyId``,
         ``SecretAccessKey``, and ``SessionToken``.
-    :raises SystemExit: If the STS call fails.
+    :raises SystemExit: If the duration is below the minimum allowed value or
+        the STS call fails.
     """
     client = boto3.client(
         "sts",
@@ -83,7 +84,7 @@ def assume_role(config: Config, access_token: str, role_session_name: str) -> di
     }
     if config.assumed_role_duration_minutes is not None:
         if config.assumed_role_duration_minutes < _MIN_DURATION_MINUTES:
-            raise ValueError(
+            sys.exit(
                 f"assumed_role_duration_minutes must be at least {_MIN_DURATION_MINUTES}"
                 f" (got {config.assumed_role_duration_minutes})."
             )
