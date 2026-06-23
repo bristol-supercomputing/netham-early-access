@@ -73,7 +73,7 @@ uv pip install git+https://github.com/bristol-supercomputing/netham-early-access
 
 ## Usage
 
-For [venv and pip](#venv-and-pip) installations, ensure the virtual environment is activated. For [uv](#uv) installations, prepend `uv run` to all the following commands and ensure they are run in the same directory that the virtual environment (`.venv`) was created.
+For [venv and pip](#venv-and-pip) installations, ensure the virtual environment is activated. For [uv](#uv) installations, prepend `uv run` to all `netham` commands and ensure they are run in the same directory that the virtual environment (`.venv`) was created.
 
 ### Configuration
 
@@ -114,13 +114,13 @@ Run
 netham auth
 ```
 
-You will be prompted to open a verification URL for the identity provider in a web browser. In the web browser authenticate to the identity provider and authorize the application if prompted. 
+You will be prompted to open a verification URL for the identity provider in a web browser. In the web browser authenticate to the identity provider and authorize the application if prompted.
 
 After authenticating and authorizing the application, `netham` will receive a web identity token and contact the STS endpoint to exchange this for temporary S3 credentials for the configured IAM role.
 
 The S3 credentials will be written to a file. By default this file is written to the current working directory and named `creds_env.sh`. An alternative path can be specified using the `netham auth --output` option.
 
-## Use the S3 credentials
+### Using S3 credentials
 
 The file output by `netham auth` is a shell script that places S3 credentials into standard [`AWS_`-prefixed environment variables](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-envvars.html) that can be used by many S3 clients (e.g. [AWS CLI](https://aws.amazon.com/cli/) and [rclone](https://rclone.org/)).
 
@@ -137,3 +137,5 @@ aws s3 ls s3://example-role-bucket
 ```
 
 Some tools may require additional configuration to communicate with the relevant S3 endpoints.
+
+The credentials will expire after the number of minutes configured for assumed role duration (or if not configured, the [default for the AssumeRoleWithWebIdentity API call](https://docs.aws.amazon.com/STS/latest/APIReference/API_AssumeRoleWithWebIdentity.html)).
