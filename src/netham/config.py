@@ -81,7 +81,7 @@ def load_config(overrides: dict[str, str | int]) -> "Config":
         )
 
     duration = merged.get("assumed_role_duration_minutes")
-    if duration is not None and not isinstance(duration, int):
+    if duration is not None and type(duration) is not int:
         sys.exit(f"assumed_role_duration_minutes must be an integer, got {type(duration).__name__!r}.")
 
     return Config(
