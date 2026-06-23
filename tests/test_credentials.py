@@ -139,6 +139,21 @@ def test_assume_role_without_duration_omits_duration_seconds(mock_boto_client: M
 
 
 @patch("netham.credentials.boto3.client")
+def test_assume_role_duration_below_minimum_exits(mock_boto_client: MagicMock) -> None:
+    """A duration below 15 minutes raises ValueError before calling STS."""
+    mock_boto_client.return_value = MagicMock()
+    config_short = Config(
+        issuer_url=_CONFIG.issuer_url,
+        client_id=_CONFIG.client_id,
+        role_arn=_CONFIG.role_arn,
+        assumed_role_duration_minutes=14,
+    )
+    with pytest.raises(ValueError):
+        assume_role(config_short, "mytoken", "user42-session")
+    mock_boto_client.return_value.assume_role_with_web_identity.assert_not_called()
+
+
+@patch("netham.credentials.boto3.client")
 def test_assume_role_client_error_exits(mock_boto_client: MagicMock) -> None:
     """A botocore ClientError causes SystemExit."""
     mock_sts = MagicMock()

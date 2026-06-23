@@ -20,6 +20,9 @@ from botocore.config import Config as BotocoreConfig
 
 from netham.config import Config
 
+# Minimum DurationSeconds accepted by assume_role_with_web_identity(), converted to minutes.
+_MIN_DURATION_MINUTES = 15
+
 
 def decode_jwt_payload(token: str) -> dict:
     """Decode the payload of a JWT without verifying the signature.
@@ -79,6 +82,11 @@ def assume_role(config: Config, access_token: str, role_session_name: str) -> di
         "WebIdentityToken": access_token,
     }
     if config.assumed_role_duration_minutes is not None:
+        if config.assumed_role_duration_minutes < _MIN_DURATION_MINUTES:
+            raise ValueError(
+                f"assumed_role_duration_minutes must be at least {_MIN_DURATION_MINUTES}"
+                f" (got {config.assumed_role_duration_minutes})."
+            )
         kwargs["DurationSeconds"] = config.assumed_role_duration_minutes * 60
     try:
         response = client.assume_role_with_web_identity(**kwargs)
